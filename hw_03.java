@@ -9,8 +9,6 @@ public class hw_03 {
        System.out.println();
        list.revert();
        list.print();
-        
-
     }
 }
 
@@ -22,13 +20,15 @@ class List {
         int value;
         Node next;
     }
-    
+
+
     public void pushFront(int value) {
         Node node = new Node();
         node.value = value;
         node.next = head;
         head = node;       
     }
+
 
     public void print() {
         Node node = head;
@@ -38,10 +38,10 @@ class List {
         }
     }
 
+
     public void revert() {
         Node current = head.next;
         head.next = null;
-
         while (current != null) {
             Node next = current.next;
             current.next = head;
@@ -49,5 +49,4 @@ class List {
             current = next;
         }
     }
-
 }
