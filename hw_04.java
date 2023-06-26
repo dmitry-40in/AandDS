@@ -13,7 +13,7 @@ class Tree {
         Node left = null;
         Node rigth = null;
         Node parent = null;
-        boolean color = BLACK;
+        boolean color = false;
     }
 
     Node nil = new Node();
@@ -52,7 +52,7 @@ class Tree {
         node.rigth = nil;
         node.key = key;
         node.value = value;
-        node.color = RED;
+        node.color = true;
     }
 
     public boolean nodeExists(Node node){
@@ -77,7 +77,7 @@ class Tree {
         node.rigth.rigth = buffer;
     }
 
-     public leftRotate(Node node){
+    public leftRotate(Node node){
         swap(node, node.rigth);
         Node buffer = node.left;
         node.left = node.rigth;
@@ -89,13 +89,13 @@ class Tree {
 
     public void balanceTree(Tree tree, Node newNode){
         Node uncle;
-        while (newNode.parent.color == RED){
+        while (newNode.parent.color == true){
             if(newNode.parent == newNode.parent.parent.left){
                 uncle = newNode.parent.parent.rigth;
-                if (uncle.color == RED) {
-                    newNode.parent.color = BLACK;
-                    uncle.color = BLACK;
-                    newNode.parent.parent.color = RED;
+                if (uncle.color == true) {
+                    newNode.parent.color = false;
+                    uncle.color = false;
+                    newNode.parent.parent.color = true;
                     newNode = newNode.parent.parent;
                 }
                 else{
@@ -103,17 +103,17 @@ class Tree {
                         newNode = newNode.parent;
                         leftRotate(tree, newNode);
                     }
-                    newNode.parent.color = BLACK;
-                    newNode.parent.parent.color = RED;
+                    newNode.parent.color = false;
+                    newNode.parent.parent.color = true;
                     rigthRotate(tree,newNode.parent.parent);
                 }
             }
             else{
                 uncle = newNode.parent.parent.left;
-                if (uncle.color == RED){
-                    newNode.parent.color = BLACK;                        
-                    uncle.color = BLACK;
-                    newNode.parent.parent.color = RED;
+                if (uncle.color == true){
+                    newNode.parent.color = false;                        
+                    uncle.color = false;
+                    newNode.parent.parent.color = true;
                     newNode = newNode.parent.parent;
                 }
                 else{
@@ -121,18 +121,13 @@ class Tree {
                         newNode = newNode.parent;
                         rigthRotate(tree, newNode);
                     }
-                    newNode.parent.color = BLACK;
-                    newNode.parent.parent.color = RED;
+                    newNode.parent.color = false;
+                    newNode.parent.parent.color = true;
                     leftRotate(tree, newNode.parent.parent);
                 }
             }
         }
-    tree.root.color = BLACK;
+    tree.root.color = false;
     }
-
-    
-    
-
-
 }
 
