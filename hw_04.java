@@ -68,7 +68,7 @@ class Tree {
         b.value = a_value;
     }
 
-    public rigthRotate(Node node){
+    public void rigthRotate(Node node){
         swap(node, node.left);
         Node buffer = node.rigth;
         node.rigth = node.left;
@@ -77,7 +77,7 @@ class Tree {
         node.rigth.rigth = buffer;
     }
 
-    public leftRotate(Node node){
+    public void leftRotate(Node node){
         swap(node, node.rigth);
         Node buffer = node.left;
         node.left = node.rigth;
@@ -101,11 +101,11 @@ class Tree {
                 else{
                     if(newNode == newNode.parent.rigth){
                         newNode = newNode.parent;
-                        leftRotate(tree, newNode);
+                        leftRotate(newNode);
                     }
                     newNode.parent.color = false;
                     newNode.parent.parent.color = true;
-                    rigthRotate(tree,newNode.parent.parent);
+                    rigthRotate(newNode.parent.parent);
                 }
             }
             else{
@@ -119,11 +119,11 @@ class Tree {
                 else{
                     if (newNode == newNode.parent.left) {
                         newNode = newNode.parent;
-                        rigthRotate(tree, newNode);
+                        rigthRotate(newNode);
                     }
                     newNode.parent.color = false;
                     newNode.parent.parent.color = true;
-                    leftRotate(tree, newNode.parent.parent);
+                    leftRotate(newNode.parent.parent);
                 }
             }
         }
