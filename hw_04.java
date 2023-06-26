@@ -29,7 +29,7 @@ class Tree {
             else {
                 currentNode = currentNode.rigth;
             }
-            }
+        }
         
         Node newNode = new Node();
         creatNode(newNode, key, value);
@@ -58,6 +58,34 @@ class Tree {
     public boolean nodeExists(Node node){
         return node != nil;
     }
+    
+    public void swap(Node a, Node b){
+        int a_key = a.key;
+        a.key = b.key;
+        b.key = a_key;
+        int a_value = a.value;
+        a.value = b.value;
+        b.value = a_value;
+    }
+
+    public rigthRotate(Node node){
+        swap(node, node.left);
+        Node buffer = node.rigth;
+        node.rigth = node.left;
+        node.left = node.rigth.left;
+        node.rigth.left = node.rigth.rigth;
+        node.rigth.rigth = buffer;
+    }
+
+     public leftRotate(Node node){
+        swap(node, node.rigth);
+        Node buffer = node.left;
+        node.left = node.rigth;
+        node.rigth = node.left.rigth;
+        node.left.rigth = node.left.left;
+        node.left.left = buffer;
+    }   
+
 
     public void balanceTree(Tree tree, Node newNode){
         Node uncle;
@@ -91,7 +119,7 @@ class Tree {
                 else{
                     if (newNode == newNode.parent.left) {
                         newNode = newNode.parent;
-                        rigthRotate(tree,newNode);
+                        rigthRotate(tree, newNode);
                     }
                     newNode.parent.color = BLACK;
                     newNode.parent.parent.color = RED;
@@ -100,6 +128,11 @@ class Tree {
             }
         }
     tree.root.color = BLACK;
-    }    
+    }
+
+    
+    
+
+
 }
 
