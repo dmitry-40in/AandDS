@@ -41,7 +41,6 @@ public class Tree {
                     }else{
                         insert(node.right, value);
                         node.right = balanceTree(node.right);
-                        return; //
                     }
                 }else{
                     if (node.left == null){
@@ -51,7 +50,6 @@ public class Tree {
                     }else{
                         insert(node.left, value);
                         node.left = balanceTree(node.left);
-                        return; //
                     }
                 }
             }else{
