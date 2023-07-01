@@ -1,12 +1,3 @@
-public class hw_04 {
-    public static void main(String[] args) {
-        Tree tree = new Tree();
-        for (int i = 1; i < 10; i++) {
-            tree.insert(i);
-        }
-    }
-}
-
 public class Tree {
     private Node root;
 
@@ -41,7 +32,6 @@ public class Tree {
                     }else{
                         insert(node.right, value);
                         node.right = balanceTree(node.right);
-                        return; //
                     }
                 }else{
                     if (node.left == null){
@@ -51,7 +41,6 @@ public class Tree {
                     }else{
                         insert(node.left, value);
                         node.left = balanceTree(node.left);
-                        return; //
                     }
                 }
             }else{
@@ -113,6 +102,8 @@ public class Tree {
             node.colorRed = true;
             return rightChild;
         }
+
+
 
 
 }
